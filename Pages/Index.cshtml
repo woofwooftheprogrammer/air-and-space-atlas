@@ -3,13 +3,46 @@
 @{
     ViewData["Title"] = "Home page";
 }
-<div class="leaflet-map full-page-map" id="homeSpacexMap"></div>
+<div class="leaflet-map full-page-map" id="rocketLaunchesMap"></div>
 
 <script>
-    var map = L.map('homeSpacexMap').setView([0, 0], 2);
+    var rocketLaunchMap = L.map('rocketLaunchesMap').setView([0, 0], 2);
+
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    minZoom: 2,
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+        minZoom: 2,
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(rocketLaunchMap);
+
+    addUpcomingLaunchesToMap()
+
+    async function retrieveUpcomingLaunches() {
+        const response = await fetch("https://ll.thespacedevs.com/2.2.0/launch/?net__gt=" + new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split('T')[0]);
+        return await response.json();
+    }
+
+    async function addUpcomingLaunchesToMap() {
+        const upcomingLaunches = await retrieveUpcomingLaunches();
+        const uniqueLaunchPads = upcomingLaunches.results
+            .map(launch => launch.pad)
+            .reduce((acc, pad) => {
+                if (!acc.some(existingPad => existingPad.id == pad.id)) {
+                    acc.push(pad);
+                }
+                return acc;
+            }, []);
+
+        for (const pad of uniqueLaunchPads) {
+            const padLaunches = upcomingLaunches.results.filter(launch => launch.pad.id == pad.id);
+            addLaunchPadMarker(padLaunches, pad);
+        }
+    }
+
+    function addLaunchPadMarker(launches, pad) {
+        const launchMarker = L.marker([pad.latitude, pad.longitude]).addTo(rocketLaunchMap);
+        let markerPopupHTML = `Launchpad ${pad.name}<br>`;
+        launches.forEach(launch => markerPopupHTML += `<br>Launch planned: ${launch.name} at ${launch.net} (UTC)<br>`);
+
+        launchMarker.bindPopup(markerPopupHTML);
+    }
 </script>
