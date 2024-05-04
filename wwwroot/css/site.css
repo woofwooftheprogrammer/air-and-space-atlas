@@ -1,0 +1,25 @@
+html,
+body {
+    height: 100%;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaflet-map {
+    min-height: 180px;
+    min-width: 180px;
+}
+
+.full-page-map {
+    width: 1200px;
+    height: 800px;
+}
