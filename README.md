@@ -12,7 +12,7 @@ The goal is to get a full system up and running that shows all the past and futu
 At the moment we are in the initial design phase so the documentation will be very minimal.
 
 ### How to run it?
-Clone or fork the repo and visual studio should be able to start immediately using the sln or csproj files.
+Clone or fork the repo and visual studio should be able to start immediately using the sln file.
 
 ### Copyright
 At the moment you are free to use any part of the code but keep in mind that i don't own the dependencies.
