@@ -23,7 +23,7 @@
 <div class="leaflet-map full-page-map" id="rocketLaunchesMap"></div>
 
 <script>
-    var rocketLaunchMap = L.map('rocketLaunchesMap').setView([0, 0], 2);
+    const rocketLaunchMap = L.map('rocketLaunchesMap').setView([0, 0], 2);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         minZoom: 2,
