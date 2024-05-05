@@ -1,4 +1,4 @@
-# air and space atlas
+# Air and space atlas
 
 ### Goal of the project
 Welcome to a very early version of a extensive atlas for air and space travel.
