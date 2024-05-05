@@ -1,5 +1,9 @@
 # Air and space atlas
 
+## Disclaimer
+At the moment the map that we have in the project is still in development and only retrieves a few results.
+You should not use this as a real service yet.
+
 ### Goal of the project
 Welcome to a very early version of a extensive atlas for air and space travel.
 The goal is to get a full system up and running that shows all the past and future air and space travel in a easy to use way.
