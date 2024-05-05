@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>air_object_movements_net_core</RootNamespace>
+    <RootNamespace>air_and_space_atlas</RootNamespace>
   </PropertyGroup>
 
 </Project>
