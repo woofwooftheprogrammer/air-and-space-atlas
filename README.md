@@ -1,6 +1,6 @@
 # Air and space atlas
 
-# Disclaimer
+### Disclaimer
 At the moment the map that we have in the project is still in development and only retrieves a few results.
 You should not use this as a real service yet.
 
